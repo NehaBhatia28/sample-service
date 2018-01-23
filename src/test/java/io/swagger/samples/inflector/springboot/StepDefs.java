@@ -99,12 +99,19 @@ public class StepDefs {
       UserResource ur = (UserResource) resource;
 
       for (Entry<String, String> entry : expectedUserDetails.entrySet()) {
+    	 ur.getName();
         switch (entry.getKey()) {
         case "Surname":
           assertThat(ur.getSurname(), equalTo(entry.getValue()));
           break;
+        case "GivenName":
+        	assertThat(ur.getGivenName(), equalTo(entry.getValue()));
+            break;
+        case "DoB":
+        	assertThat(ur.getDoB(), equalTo(entry.getValue()));
+            break;
         default:
-          throw new PendingException("TODO: user details - " + entry.getKey());
+        	throw new PendingException("TODO: user details - " + entry.getKey());
         }
       }
     } catch (NotImplementedException e) {
